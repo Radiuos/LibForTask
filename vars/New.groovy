@@ -1,5 +1,5 @@
-class New {
-    void RunMaven(def mvnHome)
+
+void RunMaven(def mvnHome)
     {
         withEnv(["MVN_HOME=$mvnHome"]) {
             if (isUnix()) {
@@ -9,8 +9,7 @@ class New {
             }
         }
     }
-    void Run()
+void Run()
     {
         sh 'mvn exec:java -Dexec.mainClass="main.java.Hello"'
     }
-}
