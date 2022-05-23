@@ -1,6 +1,6 @@
-def call(def SolutionName, def options = null)
+def call(def dotnet, def options = null)
 {
   //bat """ nuget restore ${SolutionName}  ${options ?: ''} """
   //nuget restore <projectPath> [options]
-  bat " dotnet restore "
+  bat """ ${dotnet} restore ${options ?: ''} """
 }
