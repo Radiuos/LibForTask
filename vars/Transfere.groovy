@@ -5,7 +5,7 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name)
   def archive = """${btime}.zip""".replaceAll(" ", "")
   def foulder = """${proj_name}\\bin\\${Soln_Config_Name}"""
   //NugetTask\bin\Debug
-  bat """ ${ZipPath} a -tzip ${projname}_${archive} ${foulder} """
+  bat """ ${ZipPath} a -tzip ${proj_name}_${archive} ${foulder} """
   
   
 }
