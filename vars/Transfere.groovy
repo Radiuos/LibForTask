@@ -9,7 +9,7 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name)
   //NugetTask\bin\Debug
   bat """ ${ZipPath} a -tzip ${file_name} ${foulder} """
   
-  def remote = []
+  def remote = [:]
    
     remote.host = '192.168.0.110'
     remote.user = 'user'
