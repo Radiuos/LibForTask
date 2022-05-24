@@ -2,7 +2,7 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name)
 {
   def btime = BUILD_TIMESTAMP
   def proj_name = SolutionName.replace(".sln","")
-  def archive = """${btime}.zip""".replaceAll(" ", "")
+  def archive = """${btime}""".replaceAll(" ", "")
   def file_name = """ ${proj_name}_${archive}.zip """
   def foulder = """${proj_name}\\bin\\${Soln_Config_Name}"""
   
