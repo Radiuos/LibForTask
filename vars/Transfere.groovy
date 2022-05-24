@@ -10,7 +10,7 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name)
   bat """ ${ZipPath} a -tzip ${file_name} ${foulder} """
   
   def remote = [:]
-   
+    remote.name = 'test'
     remote.host = '192.168.0.110'
     remote.user = 'user'
     remote.password = '21'
