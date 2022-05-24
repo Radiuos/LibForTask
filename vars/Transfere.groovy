@@ -7,7 +7,7 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name)
   def foulder = """${proj_name}\\bin\\${Soln_Config_Name}"""
   
   //NugetTask\bin\Debug
-  bat """ ${ZipPath} a -tzip ${proj_name}_${archive} ${foulder} """
+  bat """ ${ZipPath} a -tzip ${file_name} ${foulder} """
   
   def remote = [:]
     remote.name = 'test'
