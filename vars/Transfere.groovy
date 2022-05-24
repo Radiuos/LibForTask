@@ -13,8 +13,6 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name)
     remote.user = 'user'
     remote.password = '21'
     remote.allowAnyHosts = true
-    stage('Remote SSH') {
-      writeFile file: """ ${proj_name}_${archive} """
-      sshPut remote: remote, from: """ ${proj_name}_${archive} """, into: './data/builds/'
-    }
+    writeFile file: """ ${proj_name}_${archive} """
+    sshPut remote: remote, from: """ ${proj_name}_${archive} """, into: './data/builds/' 
 }
