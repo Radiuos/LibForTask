@@ -15,6 +15,6 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name)
     remote.user = 'user'
     remote.password = '21'
     remote.allowAnyHosts = true
-    writeFile file:file_name
-    sshPut remote: remote, from:file_name, into: './data/builds/' 
+    writeFile file:file_name.replaceAll("\\s","")
+    sshPut remote: remote, from:file_name.replaceAll("\\s",""), into: './data/builds/' 
 }
