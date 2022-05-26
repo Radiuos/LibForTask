@@ -9,13 +9,10 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name)
   //NugetTask\bin\Debug
   bat """ ${ZipPath} a -tzip ${file_name} ${foulder} """
   
-  def remote = [:]
-    remote.name = 'test'
-    remote.host = '192.168.0.110'
-    remote.user = 'user'
-    remote.password = '21'
-    remote.allowAnyHosts = true
-    writeFile file: file_name.replaceAll("\\s",""), text: 'ls -lrt'
-    sshPut remote: remote, from: file_name.replaceAll("\\s",""), into: '/home/user/builds/'
+  def url = 'http://192.168.0.110:9000/'
+  def response =  httpRequest(acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_ZIP',
+                         customHeaders  : [[name: "authorization"],[name: 'x-username' , value: 'admin']],
+                         httpMode: 'POST', ignoreSslErrors: true, multipartName: 'AppDefenseBundle.zip', timeout: 900,
+                         responseHandle: 'NONE', uploadFile: "${file_name}", url: "${url}"
     
 }
