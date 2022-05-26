@@ -12,6 +12,6 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name)
   
   
   
-  bat """-X PUT --upload-file ${file_name} ${url} """
+  bat """curl -X PUT --upload-file ${file_name} ${url} """
     
 }
