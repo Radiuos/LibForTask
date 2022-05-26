@@ -5,14 +5,13 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name)
   def archive = """${btime}""".replaceAll(" ", "")
   def file_name = """${proj_name}_${archive}.zip """
   def foulder = """${proj_name}\\bin\\${Soln_Config_Name}"""
+  def url = 'http://192.168.0.110:8000'
   
   //NugetTask\bin\Debug
   bat """ ${ZipPath} a -tzip ${file_name} ${foulder} """
   
-  def url = 'http://192.168.0.110:9000/'
-  def response =  httpRequest(acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_ZIP',
-                         customHeaders  : [[name: "authorization"],[name: 'x-username' , value: 'admin']],
-                         httpMode: 'POST', ignoreSslErrors: true, multipartName: "${file_name}", timeout: 900,
-                         responseHandle: 'NONE', uploadFile: "./${file_name}", url: "${url}")
+  
+  
+  bat """-X PUT --upload-file ${file_name} ${url} """
     
 }
