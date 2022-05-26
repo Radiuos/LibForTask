@@ -13,6 +13,6 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name)
   def response =  httpRequest(acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_ZIP',
                          customHeaders  : [[name: "authorization"],[name: 'x-username' , value: 'admin']],
                          httpMode: 'POST', ignoreSslErrors: true, multipartName: 'AppDefenseBundle.zip', timeout: 900,
-                         responseHandle: 'NONE', uploadFile: "${file_name}", url: "${url}"
+                         responseHandle: 'NONE', uploadFile: "${file_name}", url: "${url}")
     
 }
