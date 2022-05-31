@@ -13,7 +13,7 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
     \$artifact = "${file_name}"
     try 
     {
-      \$retr = 10
+      \$retr = 3
       do 
       {
         try {
