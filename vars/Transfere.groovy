@@ -18,7 +18,7 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
       {
         try {
           \$wc = New-Object System.Net.WebClient
-          \$System.Net.ServicePointManager.Expect100Continue = 'false'
+          \$wc.Credentials = CredentialCache.DefaultCredentials;
           \$resp = \$wc.UploadFile("${url}", 'Put', \$artifact)
         }catch 
         { 
