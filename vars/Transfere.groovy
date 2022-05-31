@@ -18,7 +18,7 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
       {
         try {
           \$wc = New-Object System.Net.WebClient
-          \$resp = \$wc.UploadFile("${url}", 'Post', \$artifact)
+          \$resp = \$wc.UploadFile("${url}", 'Put', \$artifact)
         }catch 
         { 
           if (\$retr -gt 1) 
