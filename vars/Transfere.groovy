@@ -9,7 +9,31 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
   bat """${ZipPath} a -tzip ${file_name} ${foulder} """
   
   //bat """curl -X PUT --upload-file ${file_name} ${url} """
-  powershell """Invoke-WebRequest -Uri ${url} -Method Put -OutFile ${file_name}"""
+  def script = """
+    \$artifact = ${file_name}"
+    try 
+    {
+      \$retr = 10
+      do {
+      try {\$wc = New-Object System.Net.WebClient
+            \$wc.Credentials = New-Object System.Net.NetworkCredential("${username}", "${password}")
+            \$resp = \$wc.UploadFile("${url}", 'Put', \$artifact)
+          } catch { if (\$retr -gt 1) 
+            {
+              \$retr -= 1
+              echo \$_.Exception.Message
+              echo "Retry..."
+              continue
+            }
+            throw "Upload failed. See log above"
+          }
+          break
+      } 
+      while(\$True)} 
+      catch {
+            echo \$_.Exception.Message
+            exit 100
+      }"""
   
   bat """del ${file_name}"""
 }
