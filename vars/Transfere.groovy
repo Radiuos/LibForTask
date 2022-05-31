@@ -9,7 +9,8 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
   bat """${ZipPath} a -tzip ${file_name} ${foulder} """
   
   //bat """curl -X PUT --upload-file ${file_name} ${url} """
- def script = """
+ 
+  def script = """
     \$artifact = "${file_name}"
     try 
     {
@@ -37,5 +38,5 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
       exit 100
     }"""
   powershell (script)
-  //bat """del ${file_name}"""
+  bat """del ${file_name}"""
 }
