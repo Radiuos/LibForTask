@@ -8,7 +8,8 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
   
   bat """${ZipPath} a -tzip ${file_name} ${foulder} """
   
-  bat """curl -X PUT --upload-file ${file_name} ${url} """
+  //bat """curl -X PUT --upload-file ${file_name} ${url} """
+  PowerShell """Invoke-WebRequest -Uri ${url} -Method Post -OutFile ${file_name}"""
   
   bat """del ${file_name}"""
 }
