@@ -10,7 +10,7 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
   
   //bat """curl -X PUT --upload-file ${file_name} ${url} """
  def script = """
-    \$artifact = ${file_name}
+    \$artifact = "${file_name}"
     try 
     {
       \$retr = 10
