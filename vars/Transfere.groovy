@@ -18,7 +18,6 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
       {
         try {
           \$wc = New-Object System.Net.WebClient
-          \$wc.Credentials = \$CredentialCache.DefaultCredentials
           \$resp = \$wc.UploadFile("${url}", 'Post', \$artifact)
         }catch 
         { 
