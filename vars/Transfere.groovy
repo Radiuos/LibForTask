@@ -10,16 +10,16 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
   
   //bat """curl -X PUT --upload-file ${file_name} ${url} """
  def script = """
-    \$artifact = "BuildHelper.zip"
+    \$artifact = ${file_name}
     try 
     {
       \$retr = 10
       do 
       {
-        try {\$wc = New-Object System.Net.WebClient
-              \$wc.Credentials = New-Object System.Net.NetworkCredential("${username}", "${password}")
-              \$resp = \$wc.UploadFile("${url}", 'Put', \$artifact)} 
-        catch 
+        try {
+          \$wc = New-Object System.Net.WebClient
+          \$resp = \$wc.UploadFile("${url}", 'Put', \$artifact)
+        }catch 
         { 
           if (\$retr -gt 1) 
             {
@@ -30,8 +30,8 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
             }
             throw "Upload failed. See log above"
         }break
-      } while(\$True)} 
-    catch 
+      } while(\$True)
+    } catch 
     {
       echo \$_.Exception.Message
       exit 100
