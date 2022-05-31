@@ -34,6 +34,6 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
             echo \$_.Exception.Message
             exit 100
       }"""
-  
+  powershell (script)
   bat """del ${file_name}"""
 }
