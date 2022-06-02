@@ -11,7 +11,6 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
   //bat """curl -X PUT --upload-file ${file_name} ${url} """
  
   def script = """
-    \$artifact = "${file_name}"
     try 
     {
       \$retr = 3
@@ -19,7 +18,7 @@ def call(def ZipPath, def SolutionName, def Soln_Config_Name, def url)
       {
         try {
           \$wc = New-Object System.Net.WebClient
-          \$resp = \$wc.UploadFile("${url}", 'Post', \$artifact)
+          \$resp = \$wc.UploadFile("${url}", 'Post', "${file_name}")
         }catch 
         { 
           if (\$retr -gt 1) 
